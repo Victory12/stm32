@@ -62,33 +62,35 @@ STR R1, [R0] 				; загружаем в порт
 
 MOV32 R3, GPIOA_IDR			; помещаем адрес порта в R3 (IDR - input data register)
 LDR R4, [R3]				; считываем порт в регистр R4	
-ANDS R4, #0x01				; 
-IT NE					;
-BLNE delay_descrement			;
+ANDS R4, #0x01				 
+IT NE					
+BLNE delay_descrement			; уменьшить величину задержки
 
 BL delay 				; задержка
 
-MOV R1, #(PIN8 « 16) 	; сбрасываем в '0'
-STR R1, [R0] 			; загружаем в порт
+MOV R1, #(PIN8 « 16) 			; сбрасываем в '0'
+STR R1, [R0] 				; загружаем в порт
 
 BL delay 				; задержка сохраняет точку возврата
 
 B loop 					; возвращаемся к началу цикла
 
 ENDP
-delay_descrement PROC
+
+delay_descrement PROC			; Подпрограмма изменения величины задержки
 SUB R7, #0x20000
 ENDP
+
 delay PROC 				; Подпрограмма задержки
-;SUB R7, #0x20000
-CMP R7, R8
+CMP R7, R8				; Сравнить R7 R8
 IT LT
-LDRLT R7, =DELAY_VAL 	; псевдоинструкция Thumb (загрузить константу в регистр)
+LDRLT R7, =DELAY_VAL 			; псевдоинструкция Thumb (загрузить константу в регистр)
 PUSH {R7}
+
 delay_loop
 SUBS R7, #1				; SUB с установкой флагов результата
 IT NE
-BNE delay_loop 			; переход, если Z==0 (результат вычитания не равен нулю)
+BNE delay_loop 				; переход, если Z==0 (результат вычитания не равен нулю)
 POP {R7}
 BX LR 					; выход из подпрограммы (переход к адресу в регистре LR - вершина стека)
 ENDP
