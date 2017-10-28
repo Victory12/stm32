@@ -1,4 +1,4 @@
-```Assembler
+```assembly
 PRESERVE8 				; 8-битное выравнивание стека
 
 THUMB
