@@ -14,11 +14,11 @@ int main(void) {
         GPIOC->BSRR |= GPIO_BSRR_BS8;           
         if (GPIOA->IDR & GPIO_IDR_IDR0) {         // нажата ли кнопка
             cycles -= 20000;
-            if (cycles < 10000) cycles = 100000;
-            delay();
-            GPIOC->BSRR |= GPIO_BSRR_BR8;
-            delay();
+            if (cycles < 10000) cycles = 100000;      
         }
+        delay();
+        GPIOC->BSRR |= GPIO_BSRR_BR8;
+        delay();
     }
 }
 
