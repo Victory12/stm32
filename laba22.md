@@ -70,11 +70,11 @@ loop 					; Бесконечный цикл
 
 	B loop 				; возвращаемся к началу цикла
 
-ENDP
-	delay_descrement PROC		; Подпрограмма изменения величины задержки
+	ENDP
+delay_descrement PROC			; Подпрограмма изменения величины задержки
 	SUB R7, #0x20000
-ENDP
-	delay PROC 			; Подпрограмма задержки
+	ENDP
+delay PROC 				; Подпрограмма задержки
 	CMP R7, R8			; Сравнить R7 R8
 	IT LT
 	LDRLT R7, =DELAY_VAL 		; псевдоинструкция Thumb (загрузить константу в регистр)
