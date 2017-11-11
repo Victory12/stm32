@@ -14,8 +14,7 @@
 	ENTRY					 ; enter into the program
 
 	Reset_Handler PROC
-	EXPORT Reset_Handler    	        ; Делаем Reset_Handler видимым вне этого файла
-	
+	EXPORT Reset_Handler    	        ; Делаем Reset_Handler видимым вне этого файла	
 main 				    		; Основная подпрограмма
 diod						; Инициализация диода
 	MOV32 R0, PERIPH_BB_BASE + \
