@@ -8,7 +8,7 @@
 
 	AREA RESET, CODE, READONLY
 
-	DCD STACK_TOP				; constants
+	DCD STACK_TOP				 ; constants
 	DCD Reset_Handler
 
 	ENTRY						; enter into the program
