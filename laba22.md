@@ -46,7 +46,7 @@ button						; Инициализация кнопки
 
 	MOV32 R0, GPIOA_BRR 			; помещаем адрес порта в R0 (BRR -  bit reset register)
 	MOV R1, #0x01 				
-	STR R2, [R0] 				; считать порт
+	STR R1, [R0] 				; считать порт
 const
 	LDR R7, =DELAY_VAL 			; псевдоинструкция Thumb (загрузить константу в регистр)
 	LDR R8, =FIN_DELAY
